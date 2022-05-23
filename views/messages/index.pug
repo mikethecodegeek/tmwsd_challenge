@@ -6,13 +6,31 @@ block content
             div(class="col-md-6 mt-5 mb-5")
                 form(method="post" action="/new")
                     input(type='hidden' name='_csrf' value=`${csrfToken}`)
-                    input(class="form-control mb-2" name='title' type='text' class="" placeholder="Message Title")
+                    input(class="form-control mb-2" name='title' type='text' class="" placeholder="Message Title" maxlength="255" required)
                     div
-                    textarea(class="form-control mb-2" name='message' class="" placeholder="Message Text")
+                    textarea(class="form-control mb-2" name='text' class="" placeholder="Message Text" required)
                     div
-                        button(class="" type='submit' class="black-outline" value='submit') Submit
-            h2(class="mb-2") Messages
-                each message in messages
-                    div(class="card mt-2 mb-3")
-                        div(class="card-header")
-                            a(href=`${message.id}`) #{message.title}
+                        button(class="btn btn-success" type='submit' value='submit') Submit
+            div(class="card p-0")
+                div(class="card-header mb-2 d-flex justify-content-between align-items-center")
+                    h3 Messages
+                    if messageCount > 0
+                        p #{messageStart}-#{messageEnd} of #{messageCount}
+                        if page > 1
+                            a(class="text-success" href=`/?page=${page - 1}`) Prev
+                        else
+                            span(class="text-light") Prev
+                        if messageEnd < messageCount
+                            a(class="text-success" href=`/?page=${page + 1}`) Next
+                        else
+                            span(class="text-light") Next 
+                    else 
+                        p No Messages
+                div(class="card-body p-0")
+                    ul(class="list-group list-group-flush")    
+                    each message in messages
+                        li(class="list-group-item bg-dark text-light")
+                            a(href=`/show/${message.id}?page=${page}`)
+                                div(class="card-body d-flex justify-content-between align-items-center")
+                                    p #{message.title}
+                                    p(class="text-muted") #{moment(message.createdAt).fromNow()}

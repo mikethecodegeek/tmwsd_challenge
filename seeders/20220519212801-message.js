@@ -5,7 +5,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
  
     const messages = []
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 24; i++) {
       messages.push({
         text: faker.lorem.paragraph(),
         title: faker.lorem.sentence(),
