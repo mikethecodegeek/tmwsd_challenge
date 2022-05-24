@@ -7,13 +7,14 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "test": "jest ./test/**/*.test.js"
+    "test": "jest ./test/**/*.test.js",
+    "start": "node ./app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/claraprice/tmwsd_challenge.git"
   },
-  "author": "",
+  "author": "Michael Sanford",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/claraprice/tmwsd_challenge/issues"
