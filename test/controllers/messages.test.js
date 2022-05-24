@@ -23,25 +23,20 @@ describe('Messages', () => {
 
     describe('createMessage', () => {
         test('it should create a message', async () => {
-            try {
-                const beforeMessageCount = await db.message.count();
-                expect(beforeMessageCount).to.equal(0);
-    
-                const message = await testMessage.createMessage('Hello', 'World');
-     
-                expect(message.title).to.equal('Hello');
-                expect(message.text).to.equal('World');
-    
-                const afterMessageCount = await db.message.count();
-                expect(afterMessageCount).to.equal(1);
-    
-                const messageFromDb = await db.message.findByPk(message.id);
-                expect(messageFromDb.title).to.equal('Hello');
-                expect(messageFromDb.text).to.equal('World');
+            const beforeMessageCount = await db.message.count();
+            expect(beforeMessageCount).to.equal(0);
 
-            } catch (error) {
-                console.log(error);
-            }
+            const message = await testMessage.createMessage('Hello', 'World');
+    
+            expect(message.title).to.equal('Hello');
+            expect(message.text).to.equal('World');
+
+            const afterMessageCount = await db.message.count();
+            expect(afterMessageCount).to.equal(1);
+
+            const messageFromDb = await db.message.findByPk(message.id);
+            expect(messageFromDb.title).to.equal('Hello');
+            expect(messageFromDb.text).to.equal('World');
         });
 
         test('it should not create a message if title is missing', async () => {
@@ -116,7 +111,7 @@ describe('Messages', () => {
             expect(messageFromDb.title).to.equal('Hello');
             expect(messageFromDb.text).to.equal('World');
         });
-        test('it should return page not found if message does not exist', async () => {
+        test('it should return message not found if message does not exist', async () => {
             const messageFromDb = await testMessage.viewMessage(1);
             expect(messageFromDb.error).to.equal('Message not found');
         });

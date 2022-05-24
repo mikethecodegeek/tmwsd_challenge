@@ -21,6 +21,7 @@ router.get('/show/:id', async (req, res) => {
 router.get('/', csrfProtection, async (req, res)  =>  {
   if (!req.query.page || req.query.page < 1) {
     res.redirect('?page=1')
+    return;
   }
   
   try {
