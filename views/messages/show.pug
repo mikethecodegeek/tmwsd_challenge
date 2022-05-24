@@ -1,0 +1,12 @@
+extends ../layout
+block content
+
+    div(class="container")
+        div(class="card mt-5")
+            div(class="card-header")
+                h2(class="text-center") #{message.title}
+            div(class="card-body")
+                p(class="card-text") #{message.text}
+                a(class="btn btn-primary" href="/") Back to Messages
+            div(class="card-footer text-muted")
+                span(class="float-right") #{moment(message.createdAt).fromNow()}
