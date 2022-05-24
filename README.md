@@ -18,7 +18,7 @@ node app.js
 
 Complete the following requirements by using any database engine of your choice. Update this readme by checking the following boxes as you go.
 
-- [ ] As a user, I should see a form to create a new message on the homepage.
+- [ X ] As a user, I should see a form to create a new message on the homepage.
 - [ X ] As a user, I should see a list of links for all created messages below the 'new message' form on the homepage.
 - [ X ] As a user, when I click a link in the message list, I should be able to view the message at a unique URL.
 - [ X ] As a user, when I open a message, the message should self-destruct (delete from the database).
