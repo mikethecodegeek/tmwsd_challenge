@@ -1,10 +1,10 @@
 extends ../layout
 
 block content
-    div(class="container")
+    div(class="container mb-5")
         div(class="row justify-content-center")
             div(class="col-md-6 mt-5 mb-5")
-                form(method="post" action="/new")
+                form(method="post" action=`/new?page=${page}`)
                     input(type='hidden' name='_csrf' value=`${csrfToken}`)
                     input(class="form-control mb-2" name='title' type='text' class="" placeholder="Message Title" maxlength="255" required)
                     div
